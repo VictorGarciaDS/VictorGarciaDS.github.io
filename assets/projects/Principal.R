@@ -1,4 +1,4 @@
-n=ncol(Datos)#QUITAR EL -1
+n=ncol(Datos)
 
 Cantidades=c(100,1000,10000,40000)#Cantidades de la etiqueta
 Paleta=MiPaleta(as.vector(unlist(Contagios@data[n])))
