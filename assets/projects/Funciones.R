@@ -8,6 +8,8 @@ library(ggplot2)#Para perfiles
 library(htmlwidgets)
 library(geojsonlint)
 library(htmltools)
+library(stringr) 
+
 
 Perfiles<-function(Datos, logscale)
 {
@@ -88,205 +90,180 @@ MapaDeContagios<-function(Shape, views)
   #hay operadores que no se pueden sobrecargar
   #Al intentar usando listas, el mapa queda estático
   #//A MANO
-  Baja_Califirnia_Sur=Shape[2,]
-  Nayarit=Shape[3,]
-  Jalisco=Shape[4,]
-  Aguascalientes=Shape[5,]
-  Guanajuato=Shape[6,]
-  Queretaro=Shape[7,]
-  Hidalgo=Shape[8,]
-  Michoacan=Shape[9,]
-  Mexico=Shape[10,]
-  CDMX=Shape[11,]#Aquí es el nombre
-  Colima=Shape[12,]
-  Morelos=Shape[13,]
-  Yucatan=Shape[14,]
-  Campeche=Shape[15,]
-  Puebla=Shape[16,]
-  Quintana_Roo=Shape[17,]
-  Tlaxcala=Shape[18,]
-  Guerrero=Shape[19,]
-  Oaxaca=Shape[20,]
-  Tabasco=Shape[21,]
-  Chiapas=Shape[22,]
-  Sonora=Shape[23,]
-  Chihuahua=Shape[24,]
-  Coahuila=Shape[25,]
-  Sinaloa=Shape[26,]
-  Durango=Shape[27,]
-  Zacatecas=Shape[28,]
-  San_Luis_Potosi=Shape[29,]
-  Nuevo_Leon=Shape[30,]
-  Tamaulipas=Shape[31,]
-  Veracruz=Shape[32,]
+  #Se eliminan acentos y espacios para nombrar los mapas
+  Estado=c()
+  CodigoHTML=c()
+  for (i in 1:32)
+  {
+    Estado[i]=iconv(gsub(" ", "_", str_to_title(Shape$Estado[i])), from="UTF-8",to="ASCII//TRANSLIT")
+    assign(Estado[i], Shape[i,])
+    CodigoHTML=paste(CodigoHTML, "this.layerManager.getLayerGroup('", Estado[i],"'), ", sep="")
+  }
+  lenght=str_length(CodigoHTML)
+  CodigoHTML=substr(CodigoHTML, 1, lenght-2)
   
-  #//A MANO
-i=1
-Estado=Shape[i,]
-  m1<-mapview(Estado, col.regions = "#00FF00",
-              label=sprintf(paste("<img src=\"", views, i,
-                                  ".png\" style=\"width:300px;height:300px;\">", sep=""))%>%
-                lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+  #//El nombre del layer del mapview y el LayerGroup en html deben coincidir,
+  #no solo como variable, ser el mismo objeto
+  m1<-mapview(Baja_California, col.regions = "#00FF00",#Cambiar por paleta1?
+              label=sprintf(paste("<img src=\"", views,
+              "1.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
               map.types="Esri.WorldImagery")
-  CodigoHTML="this.layerManager.getLayerGroup('Estado')"
-  
-  
-  
-  m2<-mapview(Baja_Califirnia_Sur, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/2.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+  m2<-mapview(Baja_California_Sur, col.regions = "#00FF00",
+              label=sprintf(paste("<img src=\"", views,
+              "2.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m3<-mapview(Nayarit, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/3.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "3.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m4<-mapview(Jalisco, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/4.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "4.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m5<-mapview(Aguascalientes, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/5.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "5.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m6<-mapview(Guanajuato, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/6.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "6.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m7<-mapview(Queretaro, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/7.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "7.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m8<-mapview(Hidalgo, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/8.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "8.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m9<-mapview(Michoacan, col.regions = "#00FF00",
-              label=sprintf(
-                "<img src=\"img/9.png\" style=\"width:300px;height:300px;\">")%>%
-                lapply(HTML),
-              alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "9.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
   m10<-mapview(Mexico, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/10.png\" style=\"width:300px;height:300pxpx;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
-  m11<-mapview(CDMX, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/11.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+              label=sprintf(paste("<img src=\"", views,
+              "10.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+              lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+              map.types="Esri.WorldImagery")
+  m11<-mapview(Ciudad_De_Mexico, col.regions = "#00FF00",
+               label=sprintf(paste("<img src=\"", views,
+               "11.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m12<-mapview(Colima, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/12.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "12.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m13<-mapview(Morelos, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/13.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "13.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m14<-mapview(Yucatan, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/14.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "14.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m15<-mapview(Campeche, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/15.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "15.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m16<-mapview(Puebla, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/16.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "16.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m17<-mapview(Quintana_Roo, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/17.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "17.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m18<-mapview(Tlaxcala, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/18.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "18.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m19<-mapview(Guerrero, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/19.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "19.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m20<-mapview(Oaxaca, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/20.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "20.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m21<-mapview(Tabasco, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/21.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "21.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m22<-mapview(Chiapas, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/22.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "22.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m23<-mapview(Sonora, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/23.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "23.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m24<-mapview(Chihuahua, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/24.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "24.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m25<-mapview(Coahuila, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/25.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "25.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m26<-mapview(Sinaloa, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/26.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "26.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m27<-mapview(Durango, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/27.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "27.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m28<-mapview(Zacatecas, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/28.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "28.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m29<-mapview(San_Luis_Potosi, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/29.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "29.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m30<-mapview(Nuevo_Leon, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/30.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "30.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m31<-mapview(Tamaulipas, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/31.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "31.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   m32<-mapview(Veracruz, col.regions = "#00FF00",
-               label=sprintf(
-                 "<img src=\"img/32.png\" style=\"width:300px;height:300px;\">")%>%
-                 lapply(HTML),
-               alpha.regions = 0.5, legend=FALSE)
+               label=sprintf(paste("<img src=\"", views,
+               "32.png\" style=\"width:300px;height:300px;\">", sep=""))%>%
+               lapply(HTML), alpha.regions = 0.5, legend=FALSE,
+               map.types="Esri.WorldImagery")
   
   M<-m1+m2+m3+m4+m5+m6+m7+m8
   M<-M+m9+m10+m11+m12+m13
@@ -309,7 +286,7 @@ Estado=Shape[i,]
       
       // use R leaflet layerManager to get Zone polygon layer group
       var Zone = [", CodigoHTML ,"]
-      var Zone2 = this.layerManager.getLayerGroup('Baja_Califirnia_Sur')
+      var Zone2 = this.layerManager.getLayerGroup('Baja_California_Sur')
       var Zone3 = this.layerManager.getLayerGroup('Nayarit')
       var Zone4 = this.layerManager.getLayerGroup('Jalisco')
       var Zone5 = this.layerManager.getLayerGroup('Aguascalientes')
@@ -318,7 +295,7 @@ Estado=Shape[i,]
       var Zone8 = this.layerManager.getLayerGroup('Hidalgo')
       var Zone9 = this.layerManager.getLayerGroup('Michoacan')
       var Zone10 = this.layerManager.getLayerGroup('Mexico')
-      var Zone11 = this.layerManager.getLayerGroup('CDMX')
+      var Zone11 = this.layerManager.getLayerGroup('Ciudad_De_Mexico')
       var Zone12 = this.layerManager.getLayerGroup('Colima')
       var Zone13 = this.layerManager.getLayerGroup('Morelos')
       var Zone14 = this.layerManager.getLayerGroup('Yucatan')
