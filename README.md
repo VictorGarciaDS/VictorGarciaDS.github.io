@@ -1,2 +1,4 @@
-# html-freebie-portfolio-perfect
-One page template, a great choice for creating a personal portfolio website, including services, projects and contact form with nice and smooth scrolling through the sections. Modern and clean HTML5 template, perfect for your online CV.
+# Portafolio profesional de Víctor Miguel García Sánchez
+Soy Víctor Miguel García Sánchez y soy Licenciado en Matemáticas especializado en estadística y muestreo. Actualmente me encuentro en búsqueda activa de empleo mientras termino mis trámites de titulación como Maestro en Ciencias Matemáticas con orientación en Finanzas Matemáticas. 
+
+Agradezco al proyecto html-freebie-portfolio-perfect por la plantilla de la página web y al proyecto <a href="https://github.com/timelyportfolio/leaftime/issues/1#issuecomment-635742475">timelyportfolio</a>.
