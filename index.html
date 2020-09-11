@@ -302,7 +302,8 @@
 
                 <h3>Contacto</h3>
                 <img src="assets/img/lines.svg" class="img-lines" alt="lines">
-                <form><!-- action="https://github.com/VictorGarciaDS/PHPForPersonal/blob/master/envia.php" method="post" class="form-consulta">-->
+                <form method="post" action="mailto:$emailID?subject=$MySubject &message= $MyMessageText">
+                    <!-- action="https://github.com/VictorGarciaDS/PHPForPersonal/blob/master/envia.php" method="post" class="form-consulta">-->
                     <div class="row">
                         <div class="col-sm-6">
                             <input type="text" name="name" class="form-control mt-x-0" placeholder="Nombre" required>
