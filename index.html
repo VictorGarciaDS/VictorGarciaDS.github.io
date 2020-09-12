@@ -302,7 +302,7 @@
 
                 <h3>Contacto</h3>
                 <img src="assets/img/lines.svg" class="img-lines" alt="lines">
-                <form method="post" action="mailto:victor.garcia@cimat.mx?subject=Quiero contratarte &body=$('#consulta')" class="form-consulta" enctype="text/plain">
+                <form id="form1"><!--method="post" action="mailto:victor.garcia@cimat.mx?subject=Quiero contratarte &body=$('#consulta')" class="form-consulta" enctype="text/plain">-->
                     <!-- action="https://github.com/VictorGarciaDS/PHPForPersonal/blob/master/envia.php" method="post" class="form-consulta">-->
                     <div class="row">
                         <div class="col-sm-6">
@@ -315,7 +315,7 @@
                             <textarea name="consulta" id="consulta" class="form-control" placeholder="Mensaje" required></textarea>
                         </div>
                     </div>
-                    <button href="#" class="btn btn-border" type="submit">Contrátame <span class="glyphicon glyphicon-send"></span></button>
+                    <button href="#" class="btn btn-border" id="bt1" type="submit">Contrátame <span class="glyphicon glyphicon-send"></span></button>
                 </form>
             </div>
         </section><!-- /.section-form -->
@@ -424,6 +424,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-progressbar/0.9.0/bootstrap-progressbar.min.js"></script>
     <script src="assets/js/jquery.countTo.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/form.js"></script>
   
 </body>
 </html>
