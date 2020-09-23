@@ -13,18 +13,6 @@
 \usepackage{empheq}
 \usepackage{tkz-euclide}
 %\usetkzobj{all}
-\usepackage{cleveref}
-\crefformat{equation}{la fórmula~(#2#1#3)}
-\crefformat{theorem}{el teorema~(#2#1#3)}
-\crefformat{lem}{lema~(#2#1#3)}
-\crefformat{item}{inciso~(#2#1#3)}     %Revisar
-\crefformat{section}{la sección~#2#1#3}
-\crefformat{subsection}{la subsección~#2#1#3}
-\crefformat{chapter}{el capítulo~#2#1#3}
-\crefformat{figure}{la figura~#2#1#3}
-\crefmultiformat{figure}{las figuras~(#2#1#3)}{ y~(#2#1#3)}{, (#2#1#3)}{ y~(#2#1#3)}
-\crefmultiformat{equation}{las fórmulas~(#2#1#3)}{ y~(#2#1#3)}{, (#2#1#3)}{ y~(#2#1#3)}
-\crefformat{appendix}{el anexo~#2#1#3}
 
 \usepackage{sectsty}
 \allsectionsfont{\centering \normalfont\scshape}
@@ -47,9 +35,14 @@
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black,
-	urlcolor=blue
+	urlcolor=blue,
+	citecolor=blue
 }
 
+\usepackage{natbib}
+\bibliographystyle{apalike}
+
+\usepackage{background}
 \usepackage{amstext} % for \text macro
 \usepackage{array}   % for \newcolumntype macro
 \newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
@@ -94,34 +87,59 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}
 
+\usepackage{cleveref}
+\crefformat{equation}{la fórmula~(#2#1#3)}
+\crefformat{theorem}{el teorema~(#2#1#3)}
+\crefformat{lem}{lema~(#2#1#3)}
+\crefformat{item}{inciso~(#2#1#3)}     %Revisar
+\crefformat{section}{la sección~#2#1#3}
+\crefformat{subsection}{la subsección~#2#1#3}
+\crefformat{chapter}{el capítulo~#2#1#3}
+\crefformat{figure}{la figura~#2#1#3}
+\crefmultiformat{figure}{las figuras~(#2#1#3)}{ y~(#2#1#3)}{, (#2#1#3)}{ y~(#2#1#3)}
+\crefmultiformat{equation}{las fórmulas~(#2#1#3)}{ y~(#2#1#3)}{, (#2#1#3)}{ y~(#2#1#3)}
+\crefformat{appendix}{el anexo~#2#1#3}
+\crefformat{problema}{el Problema~#2#1#3}
+\crefmultiformat{problema}{los Problemas~#2#1#3}{ y~#2#1#3}{, #2#1#3}{ y~#2#1#3}
+
+\def \titulo {Notas de Integración}
+\def \autor {Víctor Miguel García Sánchez}
+\def \URL {http://victorgarciads.github.io/}
+% \def \CriadorDestePDF {O Cara Que Gerou Esse PDF}
+\def \capa {capa.jpg}
+
+
 \title{
 \normalfont\normalsize
 \textsc{Universidad Nacional Autónoma de México} \\[25pt]
 \horrule{0.5pt} \\[0.4cm]
-\huge Notas de Integración\\[25pt]
+\huge \titulo\\[25pt]
 \horrule{2pt} \\[0.5cm]
 }
 
-\author{Víctor Miguel García Sánchez}
+\author{\autor}
 \date{\normalsize\today}
+
+%\input{preambulo.tex}
 
 \begin{document}
 
 \input{Portada.tex}
 
 \input{Notacion.tex}
-\newpage
+%\newpage
 
 \input{Derivada.tex}
 
 \input{Diferencial.tex}
 
-\input{IntroduccionIntegrales.tex}
+\input{IntroIntegrales.tex}
 
 \input{Artificios.tex}
+%\newpage
 
+%\input{AlternativasDiferencias.tex}
 \input{Resueltas.tex}
 
-\input{Bibliografia.tex}
-
+\bibliography{Integral}
 \end{document}

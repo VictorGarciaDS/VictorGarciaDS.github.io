@@ -1,16 +1,28 @@
+\backgroundsetup{
+ scale=1, %escala de la imagen, es recomendable que sea del mismo tamaño que el pdf
+ color=black, %fondo a usar para transparencia
+ opacity=0.1, %nivel de transparencia
+ angle=0, %en caso de querer una rotación
+ contents={%
+\includegraphics[width=\paperwidth,height=\paperheight]{capa.jpg}}}
+
 \begin{titlepage}
+  \hspace*{-80pt}
+  \begin{tikzpicture}
+    \node (a) {\includegraphics[scale=0.6]{capa.jpg}};
+    \node at(a.center)[white, yshift=2cm]{
+      {\bfseries\LARGE Universidad Nacional Autónoma de México}
+    };
+    \node at(a.center)[white, yshift=1cm]{
+      {\scshape\Large Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas\par}
+    };
+    \node at(a.center)[white, yshift=-1cm]{
+      {\scshape\Huge \titulo \par}
+    };
+  \end{tikzpicture}
 \centering
-%{\includegraphics[width=0.2\textwidth]{logo}\par}
-\vspace{1cm}
-{\bfseries\LARGE Universidad Nacional Autónoma de México\par}
-\vspace{1cm}
-{\scshape\Large Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas\par}
-\vspace{3cm}
-{\scshape\Huge Notas de cálculo integral \par}
-\vspace{3cm}
-%{\itshape\Large Proyecto Fin de Carrera \par}
 \vfill
-{\Large Víctor Miguel García Sánchez \par}
+{\Large \autor \par}
 \vfill
 {\Large Junio 2020 \par}
 \end{titlepage}
