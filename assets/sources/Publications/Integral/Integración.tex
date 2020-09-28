@@ -17,6 +17,11 @@
 \usepackage{sectsty}
 \allsectionsfont{\centering \normalfont\scshape}
 
+\usepackage{afterpage}
+\usepackage{xcolor}
+
+\definecolor{LogoBlue1}{RGB}{24, 35, 51}
+
 \usepackage{fancyhdr}
 \pagestyle{fancyplain}
 \fancyhead{}
@@ -35,8 +40,8 @@
 \hypersetup{
 	colorlinks=true,
 	linkcolor=black,
-	urlcolor=blue,
-	citecolor=blue
+	urlcolor=LogoBlue1,
+	citecolor=LogoBlue1
 }
 
 \usepackage{natbib}
@@ -46,12 +51,6 @@
 \usepackage{amstext} % for \text macro
 \usepackage{array}   % for \newcolumntype macro
 \newcolumntype{L}{>{$}l<{$}} % math-mode version of "l" column type
-
-\usepackage{draftwatermark}
-\SetWatermarkText{\textsc{En construcción}} % por defecto Draft 
-\SetWatermarkScale{5} % para que cubra toda la página
-%\SetWatermarkColor[rgb]{1,0,0} % por defecto gris claro
-\SetWatermarkAngle{55} % respecto a la horizontal
 
 \numberwithin{equation}{subsection}
 \numberwithin{figure}{subsection}
@@ -125,6 +124,8 @@
 \begin{document}
 
 \input{Portada.tex}
+
+Las presentes notas se encuentran en construcción, las sugerencias y observaciones son bien recibidas a través de \url{victor.garcia@cimat.mx}.
 
 \input{Notacion.tex}
 %\newpage

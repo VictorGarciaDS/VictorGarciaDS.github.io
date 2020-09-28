@@ -1,31 +1,24 @@
-\backgroundsetup{
- scale=1, %escala de la imagen, es recomendable que sea del mismo tamaño que el pdf
- color=black, %fondo a usar para transparencia
- opacity=0.1, %nivel de transparencia
- angle=0, %en caso de querer una rotación
- contents={%
-\includegraphics[width=\paperwidth,height=\paperheight]{capa.jpg}}}
-
+\pagecolor{LogoBlue1}\afterpage{\nopagecolor}
 \begin{titlepage}
   \hspace*{-80pt}
   \begin{tikzpicture}
-    \node (a) {\includegraphics[scale=0.6]{capa.jpg}};
-    \node at(a.center)[white, yshift=2cm]{
-      {\bfseries\LARGE Universidad Nacional Autónoma de México}
-    };
-    \node at(a.center)[white, yshift=1cm]{
-      {\scshape\Large Instituto de Investigaciones en Matemáticas Aplicadas y en Sistemas\par}
-    };
-    \node at(a.center)[white, yshift=-1cm]{
+    \node (a) {\includegraphics[scale=0.6]{Logo_Oscuro_Horizontal.png}};
+    \node at(a.center)[white, yshift=-5cm]{
       {\scshape\Huge \titulo \par}
     };
   \end{tikzpicture}
-\centering
-\vfill
-{\Large \autor \par}
-\vfill
-{\Large Junio 2020 \par}
 \end{titlepage}
+
+\backgroundsetup{
+ scale=1, %escala de la imagen, es recomendable que sea del mismo tamaño que el pdf
+ color=LogoBlue1, %fondo a usar para transparencia
+ opacity=0.1, %nivel de transparencia
+ angle=0, %en caso de querer una rotación
+ contents={%
+\includegraphics[width=\paperwidth]{Logo_Negro_Solo_Imagen.png}}
+}
+
+
 %%%%%%\chapter{}
 \begin{flushright}%
   \emph{Papá, gracias por enseñarme a integrar,\\tanto en cálculo como en la vida.}

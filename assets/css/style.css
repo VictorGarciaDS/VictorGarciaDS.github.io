@@ -186,6 +186,7 @@
       -webkit-transition: border-color 0.25s ease-in-out;
       -o-transition: border-color 0.25s ease-in-out;
       -ms-transition: border-color 0.25s ease-in-out;
+      margin-top: 16px; /* 1/2 of the total height of your ul */
   }
   
   .navbar-nav.navbar-right {
