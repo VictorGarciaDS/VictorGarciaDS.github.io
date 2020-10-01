@@ -82,7 +82,7 @@
   }
   
   .btn-fill {
-      color: #fff;
+      color: #d7edf5;
       background-color: #212121;
   }
   
@@ -94,7 +94,7 @@
   
   .btn-fill:hover,
   .btn-fill:focus {
-      color: #fff;
+      color: #d7edf5;
   }
   
   .btn:hover,
@@ -263,7 +263,7 @@
   .site-main {
       position: relative;
       margin-bottom: 100px;
-      background-color: #fff;
+      background-color: #d7edf5;
       z-index: 1;
   }
   /* site-section */
@@ -305,12 +305,12 @@
       height: 15px;
       margin-bottom: 0;
       border-radius: 0;
-      background-color: #dfdfdf;
+      background-color: #d7edf5;
       box-shadow: none;
   }
   
   .progress-bar {
-      background-color: #212121;  
+      background-color: #182333;  
   }
   
   /* Section: Services */
@@ -343,7 +343,7 @@
   .section-services .container {
       padding: 120px 100px;
       position: relative;
-      background-color: #fff;
+      background-color: #d7edf5;
       box-shadow: 0px 0px 40px 8px rgba(0, 0, 0, 0.2);
       z-index: 1;
   }
@@ -414,15 +414,15 @@
   .portfolio-item-info h4 {
       margin: 0 0 20px;
       font-weight: 700;
-      color: #fff;
+      color: #d7edf5;
   }
   
   .portfolio-item-info a {
       padding: 6px 7px 4px;
       font-size: 12px;
-      border: 1px solid #fff;
+      border: 1px solid #d7edf5;
       border-radius: 50px;
-      color: #fff;
+      color: #d7edf5;
       transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
       -moz-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
       -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
@@ -432,7 +432,7 @@
   
   .portfolio-item-info a:hover {
       color: #212121;
-      background-color: #fff;
+      background-color: #d7edf5;
   }
   
   .section-portfolio .btn {
@@ -460,7 +460,7 @@
       right: 0;
       padding: 10px 11px;
       margin-top: 0;
-      background-color: #fff;
+      background-color: #d7edf5;
       font-size: 16px;
       color: #212121;
       border-left: 1px solid #212121;
@@ -504,14 +504,14 @@
   }
   
   .section-counters h4 {
-      color: #fff;
+      color: #d7edf5;
       margin: 25px 0 0;
   }
   
   .site-section p.counter {
       font-size: 100px;
       font-weight: 300;
-      color: #fff;
+      color: #d7edf5;
       margin: 0;
       line-height: 0.8;
   }
@@ -545,8 +545,8 @@ textarea {min-height: 150px!important;}
   .icon {
       line-height: 40px;
       padding: 9px 11px;
-      color: #fff;
-      border: 1px solid #fff;
+      color: #d7edf5;
+      border: 1px solid #d7edf5;
       border-radius: 50%;
   }
   
@@ -559,7 +559,7 @@ textarea {min-height: 150px!important;}
   }
   
   .icon:hover {
-      background-color: #fff;
+      background-color: #d7edf5;
   }
   
   .site-footer a {
@@ -579,6 +579,6 @@ textarea {min-height: 150px!important;}
   .copyright {
       margin-bottom: 0;
       line-height: 40px;
-      color: #fff;
+      color: #d7edf5;
       text-align: center;
   }
