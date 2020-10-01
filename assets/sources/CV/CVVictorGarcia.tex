@@ -53,30 +53,32 @@
 
 \addbibresource{bibliography.bib}
 \RequirePackage{xcolor}
-\definecolor{pblue}{HTML}{0395DE}
+\definecolor{pblue}{HTML}{182333}
+\definecolor{pblue2}{HTML}{d7edf5}
+\definecolor{porange}{HTML}{e9511d}
 
 \begin{document}
-\header{\hspace{5.3cm}Víctor Miguel }{García Sánchez}
-      {
-      		\hspace{5.3cm}\begin{tabular}{l r}
-		Pasante de la Maestría en Matemáticas&\color{gray}
-			\normalsize
-			{
-			\begin{tabular}{r}
-				Áreas de interés:\\ 
-				\hspace{0.4cm}\scriptsize\begin{tabular}{l r r}
-					\textbf{FINANZAS MATEMÁTICAS}&\hspace{0.2cm} &\textbf{MUESTREO}\\
-					\textbf{CIENCIA DE DATOS}& &\textbf{MACHINE LEARNING}\\
-				\end{tabular}
-			\end{tabular}
-			}
+\smartdiagramset{border color = pblue,
+    set color list={pblue!70,pblue2,porange,pblue2!90,pblue!80, pblue2, porange}, 
+    bubble center node color = porange}
+\header
+      	{\hspace{15cm}\raisebox{-3ex}{\includegraphics[scale=0.06]{img/Logo_Color_Horizontal.png}}
+}
+	{\raisebox{-2ex}{\begin{minipage}{\textwidth \normalsize}
+		\begin{tabular}{r}
+		Áreas de interés:\\
+		\begin{tabular}{l r}
+					\textbf{CIENCIA DE DATOS}&\textbf{FINANZAS}\\
+					\textbf{MACHINE LEARNING}&\textbf{\hspace{0.3cm}MUESTREO}
 		\end{tabular}
-	}
+	\end{tabular}
+\end{minipage}}
+}{}
 
 % Fake text to add separator      
-\vspace{0.5cm}
-\fcolorbox{white}{gray}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
-.....
+\vspace{-0.3cm}
+\fcolorbox{white}{pblue2}{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+$\qquad$
 }}
 
 % In the aside, each new line forces a line break
@@ -88,35 +90,35 @@
     \href{mailto:victorm.garcia@comunidad.unam.mx}{\textbf{victorm.garcia@}\\comunidad.unam.mx}
     \href{mailto:victor.garcia@cimat.mx}{\textbf{victor.garcia@}\\cimat.mx}
     \section{Linkedin}
-    \url{linkedin.com/in/víctorm-garcia}%{linkedin.com/in/víctorm-garcia}
+    \url{linkedin.com/in/victorm-garcia}%{linkedin.com/in/víctorm-garcia}
     \section{Portafolio}
-    \url{victorgarciads.github.io/}%{victorgarciads.github.io/}
+    \url{victorgarciads.github.io}%{victorgarciads.github.io/}
      \section{Idiomas adicionales}
     \textbf{Inglés Intermedio-Avanzado}
   % use  \hspace{} or \vspace{} to change bubble size, if needed
   \section{Software}
-   \smartdiagram[bubble diagram]{
+\smartdiagram[bubble diagram]{
        \textbf{\vspace{1mm}R},
-       \textbf{Databricks},
+       \textbf{\vspace{1mm}LaTeX},
+       \textbf{C/C++},
         \textbf{\vspace{1mm}Python},
-        \textbf{\vspace{1mm}Spark},
-        \textbf{\vspace{1mm}Hadoop},
-        \textbf{\vspace{1mm}Tableau},
+        \textbf{\vspace{1mm}Git},
+        \textbf{\vspace{1mm}Office},
+        \textbf{\vspace{1mm}Hadoop/}\\\textbf{\vspace{1mm}Spark},
         \textbf{\vspace{-2mm}SQL}
-    }\vspace{3mm}
+    }\vspace{0.5cm}
   \section{Competencias y habilidades}
     \smartdiagram[bubble diagram]{
        \textbf{\vspace{2mm}Resiliencia},
 	\textbf{Pensamiento}\\\textbf{crítico},
 	 \textbf{Solución de}\\\textbf{problemas}\\\textbf{complejos},
-	\textbf{Creatividad},
+	\textbf{Inteligencia}\\\textbf{emocional},
         \textbf{Habilidades}\\\textbf{interpersonales},
-        \textbf{\vspace{-55mm}}
     }
     ~
 \end{aside}
-\textbf{Objetivo profesional:}
-Incorporarme al área de procesamiento y análisis de datos para ampliar mis conocimientos prácticos en finanzas y estadística. Contribuir de manera positiva con el área administrativa para mejorar los procesos y resultados dentro de la compañía.
+\textbf{Resumen profesional:}
+Científico de datos con experiencia en investigación en proyectos inter- disciplinarios con interés en incorporarse al área de análisis de datos. Disciplinado y de rápido aprendizaje y adaptabilidad. Con buena disposición para trabajar en equipo y  capacidad de cumplir objetivos con tiempos predefinidos. Orientado a resultados. 
 \vspace{-0.4cm}
 \section{Experiencia profesional}
 \begin{entrylist}
@@ -223,9 +225,9 @@ Incorporarme al área de procesamiento y análisis de datos para ampliar mis con
 ~
 ~
 	\section{Manejo de Sistemas Operativos}
-    \textbf{GNU/Linux}\includegraphics[scale=0.40]{img/5stars.png}
-    \textbf{Windows}\includegraphics[scale=0.40]{img/4stars.png}
-    \textbf{Mac OS}\includegraphics[scale=0.40]{img/4stars.png}
+    \textbf{GNU/Linux}\includegraphics[scale=0.07]{img/5stars.png}
+    \textbf{Windows}\includegraphics[scale=0.07]{img/4stars.png}
+    \textbf{Mac OS}\includegraphics[scale=0.07]{img/4stars.png}
 	\section{Certificados}
 	~
      	\includegraphics[scale=0.04]{img/Microsoft.jpg}
