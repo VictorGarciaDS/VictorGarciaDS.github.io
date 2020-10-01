@@ -202,7 +202,7 @@
   .nav > li > a:hover,
   .nav > li.active > a {
       background-color: transparent;
-      border-bottom: 2px solid #182333;
+      border-bottom: 2px solid #e9511d;
   }
   
   .nav > li > a:focus {
