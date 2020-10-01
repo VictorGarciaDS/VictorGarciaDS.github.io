@@ -83,13 +83,13 @@
   
   .btn-fill {
       color: #d7edf5;
-      background-color: #212121;
+      background-color: #182333;
   }
   
   .btn-border {
       background-color: transparent;
-      color: #212121;
-      border: 1px solid #212121; 
+      color: #182333;
+      border: 1px solid #182333; 
   }
   
   .btn-fill:hover,
@@ -106,7 +106,7 @@
   .form-control {
       padding-left: 10px;
       border: 0;
-      border-bottom: 1px solid #212121;
+      border-bottom: 1px solid #182333;
       border-radius: 0;
       background-color: transparent; 
       box-shadow: none;
@@ -139,7 +139,7 @@
       padding: 0;
       font-family: 'Open Sans', sans-serif;
       font-size: 16px;
-      color: #212121;
+      color: #182333;
   }
   
   .img-res {
@@ -178,7 +178,7 @@
   .navbar-nav > li > a {
       padding: 5px 0;
       font-weight: 600;
-      color: #212121;
+      color: #182333;
       text-transform: uppercase;
       border-bottom: 2px solid transparent;
       transition: border-color 0.25s ease-in-out;
@@ -202,7 +202,7 @@
   .nav > li > a:hover,
   .nav > li.active > a {
       background-color: transparent;
-      border-bottom: 2px solid #212121;
+      border-bottom: 2px solid #182333;
   }
   
   .nav > li > a:focus {
@@ -355,7 +355,7 @@
   }
   
   .service p {
-      color: #000;
+      color: #182333;
       margin-bottom: 0;
   }
   
@@ -431,7 +431,7 @@
   }
   
   .portfolio-item-info a:hover {
-      color: #212121;
+      color: #182333;
       background-color: #d7edf5;
   }
   
@@ -462,9 +462,9 @@
       margin-top: 0;
       background-color: #d7edf5;
       font-size: 16px;
-      color: #212121;
-      border-left: 1px solid #212121;
-      border-bottom: 1px solid #212121;
+      color: #182333;
+      border-left: 1px solid #182333;
+      border-bottom: 1px solid #182333;
       opacity: 1;
       transition: box-shadow 0.25s ease-in-out;
       -moz-transition: box-shadow 0.25s ease-in-out;
@@ -538,7 +538,7 @@ textarea {min-height: 150px!important;}
       bottom: 0;
       padding: 30px 0;
       width: 100%;
-      background-color: #212121;
+      background-color: #182333;
       z-index: -1;
   }
   
@@ -574,7 +574,7 @@ textarea {min-height: 150px!important;}
   a.facebook-bg:hover{color: #3b5998;}
   a.gplus-bg:hover{color: #007bb5;} 
   a.linkedin-bg:hover {color: #dd4b39;}
-  a.icon-up-bg:hover {color: #212121;}
+  a.icon-up-bg:hover {color: #182333;}
   
   .copyright {
       margin-bottom: 0;
