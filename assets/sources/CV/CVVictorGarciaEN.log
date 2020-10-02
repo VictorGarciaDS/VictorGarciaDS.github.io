@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2020.9.12)  2 OCT 2020 00:15
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2020.9.12)  2 OCT 2020 15:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1289,8 +1289,8 @@ LaTeX Info: Redefining \nameref on input line 60.
 \@outlinefile=\write5
 \openout5 = `CVVictorGarciaEN.out'.
 
-File: img/Logo_Color_Horizontal.png Graphic file (type bmp)
-<img/Logo_Color_Horizontal.png>
+File: img/Logo_Color_HorizontalEN.png Graphic file (type bmp)
+<img/Logo_Color_HorizontalEN.png>
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
 (Font)              scaled to size 10.00107pt on input line 76.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
@@ -1402,8 +1402,8 @@ Package logreq Info: Writing requests to 'CVVictorGarciaEN.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  35557 strings out of 481722
- 706807 string characters out of 5935214
- 1524069 words of memory out of 5000000
+ 706819 string characters out of 5935214
+ 1524071 words of memory out of 5000000
  51996 multiletter control sequences out of 15000+600000
  533758 words of font info for 72 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
