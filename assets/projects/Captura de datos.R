@@ -2,11 +2,11 @@ library(foreign)#para DBF
 library(rgdal)#Para Shp
 
 location=getwd()
-location="/home/victor/Documentos/Carrera/Maestría/UNAM/Investigaciones/Visualizador/"
+#location="/home/victor/Documentos/Carrera/Maestría/UNAM/Investigaciones/Visualizador/"
 setwd(location)
 #Constantes
 PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-08-26"
+UltimaFechaRegistrada="2020-10-02"
 
 #  Descarga de datos
 ##  Los que ya estaban colapsados
@@ -22,6 +22,12 @@ dates<-function(inicial,final)
     if(as.double(inicial)<10)#Forza fechas en caracteres completas
       inicial=paste("0", as.double(inicial), sep = "")
     month=substr(inicial, 4, 5)
+    #La siguiente condicional corrige un error de redondeo para octubre.
+    if(month==1)
+    {
+      month=10
+      inicial=paste(inicial, sep = "0", "")
+    }
     urlAux<-paste(url, month, "/datos_abiertos_covid19_", inicial, ".2020.zip", sep = "")
     destAux<-paste(inicial, ".2020.zip")
     download.file(urlAux, destAux)
@@ -36,7 +42,9 @@ downloader<-function(url, final)
   dates("01.05", "31.05")
   dates("01.06", "30.06")
   dates("01.07", "31.07")
-  dates("01.08", final)
+  dates("01.08", "31.08")
+  dates("01.09", "30.09")
+  dates("01.10", final)
 }
 AjustaOrden<-function(DataFrame)
 {
@@ -75,13 +83,14 @@ for (i in 1:m)
 }
 unlink("*.zip")
 unlink("*.csv")
+unlink("covid19_mex-master", recursive=TRUE)
 write.csv(x = Datos, file = "aux.csv")
 
 ### Incrementos
 DatosIncrementos<-Datos[,-n]
 for (i in 2:(n-1))
   DatosIncrementos[,i]=Datos[,i+1]-Datos[,i]
-Derivada<-Perfiles(DatosIncrementos, FALSE)+theme(legend.position="right")
+#######Derivada<-Perfiles(DatosIncrementos, FALSE)+theme(legend.position="right")
 #ggsave("Derivada.png" ,Derivada)
 
 #Datos=read.csv("aux.csv")[,-1]

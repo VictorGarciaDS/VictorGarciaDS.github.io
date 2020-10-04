@@ -2,9 +2,10 @@ n=ncol(Datos)
 
 Cantidades=c(100,1000,10000,40000)#Cantidades de la etiqueta
 Paleta=MiPaleta(as.vector(unlist(Contagios@data[n])))
-PerfilesPNG(Datos, "img/confirmados/actuales/")
-Mapa=MapaDeContagios(Contagios, "img/confirmados/actuales/")
-saveWidget(Mapa, file = "MapaDeContagios.html", selfcontained = F)
+PerfilesPNG(Datos, "assets/img/confirmados/actuales/")
+Mapa=MapaDeContagios(Contagios, "assets/img/confirmados/actuales/")
+saveWidget(Mapa, file = "MapaDeContagios.html", selfcontained = F, title="Contagios confirmados")
+
 
 ContagiosCPrediccion=Contagios
 ContagiosCPrediccion@data=PrediccionDeDatos(Datos, 10)
