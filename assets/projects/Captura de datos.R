@@ -73,18 +73,20 @@ m=length(list.files(pattern = "*.csv"))
 for (i in 1:m)
 {
   Aux=read.csv(list.files(pattern = "*.csv")[i])
-  Aux=Aux[which(Aux$RESULTADO==1),]#1 ES CONFIRMADOS
+  Confirmados=Aux[which(Aux$RESULTADO==1),]#1 ES CONFIRMADOS
   A=Datos[,1:2]
   colnames(A)[2]=paste("X2020.", substr(list.files(pattern = "*.csv")[i], 3,4), ".", substr(list.files(pattern = "*.csv")[i], 5,6), sep="")
   for (j in 1:32)
-    A[j, 2]=length(which(Aux$ENTIDAD_UM==j))
+  {
+    A[j, 2]=length(which(Confirmados$ENTIDAD_UM==j))
+  }
   A=AjustaOrden(A)
   Datos=merge(Datos, A)
 }
 unlink("*.zip")
 unlink("*.csv")
 unlink("covid19_mex-master", recursive=TRUE)
-write.csv(x = Datos, file = "aux.csv")
+write.csv(x = Datos, file = "Confirmados.csv")
 
 ### Incrementos
 DatosIncrementos<-Datos[,-n]
@@ -93,7 +95,7 @@ for (i in 2:(n-1))
 #######Derivada<-Perfiles(DatosIncrementos, FALSE)+theme(legend.position="right")
 #ggsave("Derivada.png" ,Derivada)
 
-#Datos=read.csv("aux.csv")[,-1]
+#Datos=read.csv("Confirmados.csv")[,-1]
 n=ncol(Datos)
 #Lectura de información del MAPA
 download.file("https://tapiquen-sig.jimdofree.com/app/download/5497303759/Mexico_States.rar?t=1455822276", "States")
