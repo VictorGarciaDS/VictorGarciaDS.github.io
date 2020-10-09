@@ -6,7 +6,7 @@ location=getwd()
 setwd(location)
 #Constantes
 PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-10-02"
+UltimaFechaRegistrada="2020-10-06"
 
 #  Descarga de datos
 ##  Los que ya estaban colapsados
@@ -40,11 +40,11 @@ downloader<-function(url, final)
 {
   dates("19.04", "30.04")
   dates("01.05", "31.05")
-  dates("01.06", "30.06")
-  dates("01.07", "31.07")
-  dates("01.08", "31.08")
-  dates("01.09", "30.09")
-  dates("01.10", final)
+#  dates("01.06", "30.06")
+#  dates("01.07", "31.07")
+#  dates("01.08", "31.08")
+#  dates("01.09", "30.09")
+#  dates("01.10", final)
 }
 AjustaOrden<-function(DataFrame)
 {
@@ -70,47 +70,86 @@ for (i in 2:n)
   Datos=merge(Datos, read.csv(paste("covid19_mex-master/data/", paths[i],"/positivos_",paths[i], ".csv", sep = "")))
 
 m=length(list.files(pattern = "*.csv"))
+print(m)
+#DatosConfirmados
 for (i in 1:m)
 {
   Aux=read.csv(list.files(pattern = "*.csv")[i])
-  Confirmados=Aux[which(Aux$RESULTADO==1),]#1 ES CONFIRMADOS
-  A=Datos[,1:2]
-  colnames(A)[2]=paste("X2020.", substr(list.files(pattern = "*.csv")[i], 3,4), ".", substr(list.files(pattern = "*.csv")[i], 5,6), sep="")
+  Confirmados=Aux[which(Aux$RESULTADO==1),]
+
+  DatosConfirmados= Datos[,1:2]
+  colnames(DatosConfirmados)[2]=paste("X2020.", substr(list.files(pattern = "*.csv")[i], 3,4), ".", substr(list.files(pattern = "*.csv")[i], 5,6), sep="")
   for (j in 1:32)
-  {
-    A[j, 2]=length(which(Confirmados$ENTIDAD_UM==j))
-  }
-  A=AjustaOrden(A)
-  Datos=merge(Datos, A)
+    DatosConfirmados[j, 2]= length(which(Confirmados$ENTIDAD_UM==j))
+  DatosConfirmados=AjustaOrden(DatosConfirmados)
+  DatosConfirmados=merge(Datos, DatosConfirmados)
 }
+#DatosNegativos
+for (i in 1:m)
+{
+  Aux=read.csv(list.files(pattern = "*.csv")[i])
+  Negativos=Aux[which(Aux$RESULTADO==2),]
+  
+  DatosNegativos= Datos[,1:2]
+  colnames(DatosNegativos)[2]=paste("X2020.", substr(list.files(pattern = "*.csv")[i], 3,4), ".", substr(list.files(pattern = "*.csv")[i], 5,6), sep="")
+  for (j in 1:32)
+    DatosNegativos[j, 2]= length(which(Negativos$ENTIDAD_UM==j))
+  DatosNegativos=AjustaOrden(DatosNegativos)
+  DatosNegativos=merge(Datos, DatosNegativos)
+}
+#DatosSospechosos
+for (i in 1:m)
+{
+  Aux=read.csv(list.files(pattern = "*.csv")[i])
+  Sospechosos=Aux[which(Aux$RESULTADO==3),]
+  
+  DatosSospechosos= Datos[,1:2]
+  colnames(DatosSospechosos)[2]=paste("X2020.", substr(list.files(pattern = "*.csv")[i], 3,4), ".", substr(list.files(pattern = "*.csv")[i], 5,6), sep="")
+  for (j in 1:32)
+    DatosSospechosos[j, 2]= length(which(Sospechosos$ENTIDAD_UM==j))
+  DatosSospechosos=AjustaOrden(DatosSospechosos)
+  DatosSospechosos=merge(Datos, DatosSospechosos)
+}
+
 unlink("*.zip")
 unlink("*.csv")
 unlink("covid19_mex-master", recursive=TRUE)
-write.csv(x = Datos, file = "Confirmados.csv")
+write.csv(x = DatosConfirmados, file = "Confirmados.csv")
+write.csv(x = DatosNegativos, file = "Negativos.csv")
+write.csv(x = DatosSospechosos, file = "Sospechosos.csv")
 
 ### Incrementos
-DatosIncrementos<-Datos[,-n]
+DatosIncrementos<-DatosConfirmados[,-n]
 for (i in 2:(n-1))
-  DatosIncrementos[,i]=Datos[,i+1]-Datos[,i]
+  DatosIncrementos[,i]=DatosConfirmados[,i+1]-DatosConfirmados[,i]
 #######Derivada<-Perfiles(DatosIncrementos, FALSE)+theme(legend.position="right")
 #ggsave("Derivada.png" ,Derivada)
 
-#Datos=read.csv("Confirmados.csv")[,-1]
-n=ncol(Datos)
+#DatosConfirmados=read.csv("Confirmados.csv")[,-1]
+n=ncol(DatosConfirmados)
 #Lectura de información del MAPA
 download.file("https://tapiquen-sig.jimdofree.com/app/download/5497303759/Mexico_States.rar?t=1455822276", "States")
 system("unrar e States")
-Datos2=read.dbf("Mexico_States.dbf")
+DatosGeo=read.dbf("Mexico_States.dbf")
 #Las siguientes 2 lineas ajustan las columnas para
 #que la base coincida con el shape
-a=order(order(Datos2$NAME))
+a=order(order(DatosGeo$NAME))
 #a[c(10,13,12,25,9,11)]=a[c(9,10,11,12,13,25)]
 a[c(12,25,11)]=a[c(11,12,25)]
 
-Datos=Datos[a,-n]
-write.dbf(Datos,"Mexico_States.dbf")
+DatosConfirmados=DatosConfirmados[a,-n]### ¿Quita la ultima columna?
+DatosNegativos=DatosNegativos[a,-n]### ¿Quita la ultima columna?
+DatosSospechosos=DatosSospechosos[a,-n]### ¿Quita la ultima columna?
+
+write.dbf(DatosConfirmados,"Mexico_States.dbf")
 
 #Visualización del mapa
-Contagios<-readOGR(dsn = location, layer = "Mexico_States")
-Contagios@data=Datos
-Contagios <- spTransform(Contagios, CRS("+proj=longlat +init=epsg:3857"))
+ConfirmadosOGR<-readOGR(dsn = location, layer = "Mexico_States")
+ConfirmadosOGR@data=DatosConfirmados
+
+NegativosOGR<-readOGR(dsn = location, layer = "Mexico_States")
+NegativosOGR@data=DatosNegativos
+
+SospechososOGR<-readOGR(dsn = location, layer = "Mexico_States")
+SospechososOGR@data=DatosSospechosos
+#####Contagios <- spTransform(Contagios, CRS("+proj=longlat +init=epsg:3857"))
