@@ -483,6 +483,8 @@
   
   .modal-footer {
       text-align: center;
+      justify-content: center;
+      display: flex;
   }
   
   /* Section: Counters */
