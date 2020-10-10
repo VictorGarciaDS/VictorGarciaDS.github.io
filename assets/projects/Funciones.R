@@ -31,7 +31,8 @@ MiPaleta<-function(Valores)
   FactorZonaVe=1
   FactorZonaAm=0.7
   FactorZonaRo=2
-  SegundoMayor=Valores[order(Valores)][length(Valores)-1]
+  Valores=Valores[-11,-1]
+  SegundoMayor=max(Valores)#Valores[order(Valores)][length(Valores)-1]
   #569 es el máximo número de colores sin repetir
   Escalado=floor(SegundoMayor/569)+1
   Colores=rainbow(floor(1530*Escalado*FactorZonaVe))[(floor(569*Escalado*FactorZonaVe)):(floor(290*Escalado*FactorZonaVe))]
@@ -76,7 +77,7 @@ PerfilesPNG<-function(Datos, views)
            bg="transparent", width = 3, height = 3)
 }
 
-MapaDeContagios<-function(Shape, views)
+MapaDeContagios<-function(Shape, views, titleLegend)
 {
   n=ncol(Shape@data)
   # add some fake start and end dates
@@ -346,7 +347,7 @@ MapaDeContagios<-function(Shape, views)
   M<-M%>% addLegend("bottomleft",
                     labels= c(Cantidades),
                     colors =c(substr(Paleta[Cantidades],1,7)),
-                    title= "Contagios confirmados de COVID 19",
+                    title= titleLegend,
                     opacity = 1)
   return(M)
 }
@@ -381,4 +382,21 @@ PrediccionDeDatos<-function(Data, l)#Data es la base y l los días a futuro
     A[i,]=t(newdata[172:(n+2*l),2])#172??? de donde salió??
   }
   NewData=cbind(Data, A)
+}
+
+#Función en construcción, al intentar empaquetar, no corre bien las comparaciones de MiPaleta
+CreateMap<-function(BaseDatos, views, titleLegend, file, titleFile)
+{
+  n=ncol(BaseDatos)
+  BaseDatos=BaseDatos[a,-n]
+  write.dbf(BaseDatos,"Mexico_States.dbf")
+  #Visualización del mapa
+  OGR<-readOGR(dsn = location, layer = "Mexico_States")
+  OGR@data=BaseDatos
+
+  n=ncol(BaseDatos)
+  Paleta=MiPaleta(as.vector(unlist(OGR@data[n])))
+  PerfilesPNG(BaseDatos, views)
+  MapaConfirmados=MapaDeContagios(OGR, views, titleLegend)
+  saveWidget(MapaConfirmados, file=file, selfcontained = F, title=titleFile)
 }
