@@ -5,7 +5,7 @@ write.dbf(Confirmados,"Mexico_States.dbf")
 ConfirmadosOGR<-readOGR(dsn = location, layer = "Mexico_States")
 ConfirmadosOGR@data=Confirmados
 n=ncol(Confirmados)
-Cantidades=c(100,1000,10000,40000)#Cantidades de la etiqueta
+Cantidades=c(100,1000,10000,60000)#Cantidades de la etiqueta
 Paleta=MiPaleta(ConfirmadosOGR@data)
 PerfilesPNG(Confirmados, "assets/img/confirmados/actuales/")
 MapaConfirmados=MapaDeContagios(ConfirmadosOGR, "assets/img/confirmados/actuales/", "Contagios confirmados de COVID 19")
@@ -21,7 +21,9 @@ write.dbf(Negativos,"Mexico_States.dbf")
 NegativosOGR<-readOGR(dsn = location, layer = "Mexico_States")
 NegativosOGR@data=Negativos
 n=ncol(Negativos)
+Cantidades=c(1000,10000,40000,70000)#Cantidades de la etiqueta
 Paleta=MiPaleta(NegativosOGR@data)
+Paleta=rev(Paleta)
 PerfilesPNG(Negativos, "assets/img/negativos/actuales/")
 MapaNegativos=MapaDeContagios(NegativosOGR, "assets/img/negativos/actuales/", "Negativos a contagio de COVID 19")
 saveWidget(MapaNegativos, file = "Negativos.html", selfcontained = F, title="Negativos")
@@ -46,7 +48,7 @@ write.dbf(Defunciones,"Mexico_States.dbf")
 DefuncionesOGR<-readOGR(dsn = location, layer = "Mexico_States")
 DefuncionesOGR@data=Defunciones
 n=ncol(Defunciones)
-Cantidades=c(100,1000,4000,7000)#Cantidades de la etiqueta
+Cantidades=c(100,1000,4000,9000)#Cantidades de la etiqueta
 Paleta=MiPaleta(DefuncionesOGR@data)
 PerfilesPNG(Defunciones, "assets/img/defunciones/actuales/")
 MapaDefunciones=MapaDeContagios(DefuncionesOGR, "assets/img/defunciones/actuales/", "Defunciones por COVID 19")
@@ -59,7 +61,7 @@ write.dbf(Recuperados,"Mexico_States.dbf")
 RecuperadosOGR<-readOGR(dsn = location, layer = "Mexico_States")
 RecuperadosOGR@data=Recuperados
 n=ncol(Recuperados)
-Cantidades=c(100,1000,10000,20000)#Cantidades de la etiqueta
+Cantidades=c(100,1000,10000,30000)#Cantidades de la etiqueta
 Paleta=MiPaleta(RecuperadosOGR@data)
 Paleta=rev(Paleta)
 PerfilesPNG(Recuperados, "assets/img/recuperados/actuales/")

@@ -43,6 +43,14 @@ $(function() {
         }
     });
 
+    $(document).ready(function() {
+
+        if(window.location.href.indexOf('#MapasEvolucionCOVID') != -1) {
+          $('#MapasEvolucionCOVID').modal('show');
+        }
+      
+    });
+
     /* Counters  */
     if ($(".section-counters .start").length>0) {
         $(".section-counters .start").each(function() {

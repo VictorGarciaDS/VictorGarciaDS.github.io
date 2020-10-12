@@ -348,7 +348,10 @@ MapaDeContagios<-function(Shape, views, titleLegend)
                     labels= c(Cantidades),
                     colors =c(substr(Paleta[Cantidades],1,7)),
                     title= titleLegend,
-                    opacity = 1)
+                    opacity = 1)%>%
+    addLogo("assets/img/Logo_Claro_Horizontal.png", src = "local",
+            position = "topleft", alpha = 1, width=200,
+            url="https://victorgarciads.github.io/index.html#MapasEvolucionCOVID")
   return(M)
 }
 PrediccionDeDatos<-function(Data, l)#Data es la base y l los días a futuro
