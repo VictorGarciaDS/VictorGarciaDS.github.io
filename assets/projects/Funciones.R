@@ -350,7 +350,7 @@ MapaDeContagios<-function(Shape, views, titleLegend)
                     title= titleLegend,
                     opacity = 1)%>%
     addLogo("assets/img/Logo_Claro_Horizontal.png", src = "local",
-            position = "topleft", alpha = 1, width=200,
+            position = "topleft", alpha = 1, width=250,
             url="victorgarciads.github.io#MapasEvolucionCOVID")
   return(M)
 }
