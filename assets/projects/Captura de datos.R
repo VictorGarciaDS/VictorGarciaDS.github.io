@@ -6,7 +6,7 @@ location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaD
 setwd(location)
 #Constantes
 PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-10-10"
+UltimaFechaRegistrada="2020-10-11"
 
 #  Descarga de datos
 ##  Los que ya estaban colapsados

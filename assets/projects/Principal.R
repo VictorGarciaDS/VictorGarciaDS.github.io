@@ -7,7 +7,7 @@ ConfirmadosOGR@data=Confirmados
 n=ncol(Confirmados)
 Cantidades=c(100,1000,10000,60000)#Cantidades de la etiqueta
 Paleta=MiPaleta(ConfirmadosOGR@data)
-PerfilesPNG(Confirmados, "assets/img/confirmados/actuales/")
+PerfilesPNG(Confirmados, "assets/img/confirmados/actuales/", "Confirmados")
 MapaConfirmados=MapaDeContagios(ConfirmadosOGR, "assets/img/confirmados/actuales/", "Contagios confirmados de COVID 19")
 saveWidget(MapaConfirmados, file = "Confirmados.html", selfcontained = F, title="Confirmados")
 
@@ -24,7 +24,7 @@ n=ncol(Negativos)
 Cantidades=c(1000,10000,40000,70000)#Cantidades de la etiqueta
 Paleta=MiPaleta(NegativosOGR@data)
 Paleta=rev(Paleta)
-PerfilesPNG(Negativos, "assets/img/negativos/actuales/")
+PerfilesPNG(Negativos, "assets/img/negativos/actuales/", "Negativos")
 MapaNegativos=MapaDeContagios(NegativosOGR, "assets/img/negativos/actuales/", "Negativos a contagio de COVID 19")
 saveWidget(MapaNegativos, file = "Negativos.html", selfcontained = F, title="Negativos")
 
@@ -37,7 +37,7 @@ SospechososOGR@data=Sospechosos
 n=ncol(Sospechosos)
 Cantidades=c(100,1000,10000,19000)#Cantidades de la etiqueta
 Paleta=MiPaleta(SospechososOGR@data)
-PerfilesPNG(Sospechosos, "assets/img/sospechosos/actuales/")
+PerfilesPNG(Sospechosos, "assets/img/sospechosos/actuales/", "Sospechosos")
 MapaSospechosos=MapaDeContagios(SospechososOGR, "assets/img/sospechosos/actuales/", "Sospechosos de contagio de COVID 19")
 saveWidget(MapaSospechosos, file = "Sospechosos.html", selfcontained = F, title="Sospechosos")
 
@@ -50,7 +50,7 @@ DefuncionesOGR@data=Defunciones
 n=ncol(Defunciones)
 Cantidades=c(100,1000,4000,9000)#Cantidades de la etiqueta
 Paleta=MiPaleta(DefuncionesOGR@data)
-PerfilesPNG(Defunciones, "assets/img/defunciones/actuales/")
+PerfilesPNG(Defunciones, "assets/img/defunciones/actuales/", "Defunciones")
 MapaDefunciones=MapaDeContagios(DefuncionesOGR, "assets/img/defunciones/actuales/", "Defunciones por COVID 19")
 saveWidget(MapaDefunciones, file = "Defunciones.html", selfcontained = F, title="Defunciones")
 
@@ -64,7 +64,7 @@ n=ncol(Recuperados)
 Cantidades=c(100,1000,10000,30000)#Cantidades de la etiqueta
 Paleta=MiPaleta(RecuperadosOGR@data)
 Paleta=rev(Paleta)
-PerfilesPNG(Recuperados, "assets/img/recuperados/actuales/")
+PerfilesPNG(Recuperados, "assets/img/recuperados/actuales/", "Recuperados")
 MapaRecuperados=MapaDeContagios(RecuperadosOGR, "assets/img/recuperados/actuales/", "Recuperados de COVID 19")
 saveWidget(MapaRecuperados, file = "Recuperados.html", selfcontained = F, title="Recuperados")
 
@@ -77,7 +77,7 @@ ActivosOGR@data=Activos
 n=ncol(Activos)
 Paleta=MiPaleta(ActivosOGR@data)
 Cantidades=c(100,1000,2000,3000)#Cantidades de la etiqueta
-PerfilesPNG(Activos, "assets/img/activos/actuales/")
+PerfilesPNG(Activos, "assets/img/activos/actuales/", "Activos")
 MapaActivos=MapaDeContagios(ActivosOGR, "assets/img/activos/actuales/", "Contagios activos de COVID 19")
 saveWidget(MapaActivos, file = "Activos.html", selfcontained = F, title="Activos")
 

@@ -11,14 +11,14 @@ library(htmltools)
 library(stringr) 
 
 
-Perfiles<-function(Datos, logscale)
+Perfiles<-function(Datos, logscale, ylabel)
 {
   n=ncol(Datos)
   m=nrow(Datos)
   data_long<-cbind(melt(Datos, id.vars="Estado"), rep(1:(n-1), each=m))
   colnames(data_long)[c(3,4)]=c("Contagiados", "Días transcurridos")
   p <- ggplot ( data = data_long , aes ( x = `Días transcurridos` , y = Contagiados , group = Estado, col=Estado))
-  p <-p + geom_line()+theme(legend.position = "none")
+  p <-p + geom_line()+theme(legend.position = "none")+ylab(ylabel)
   if(logscale==TRUE)
   {
     data_long$value=data_long$value+1
@@ -68,11 +68,11 @@ ColorMatrix<-function(Mapa)
   return(CM)
 }
 
-PerfilesPNG<-function(Datos, views)
+PerfilesPNG<-function(Datos, views, ylabel)
 {
   m=nrow(Datos)
   for (i in 1:m)
-    ggsave(Perfiles(Datos[i,], FALSE)+ggtitle(Datos$Estado[i]),
+    ggsave(Perfiles(Datos[i,], FALSE, ylabel)+ggtitle(Datos$Estado[i]),
            filename = paste(views, i,".png", sep=""),
            bg="transparent", width = 3, height = 3)
 }
@@ -350,7 +350,7 @@ MapaDeContagios<-function(Shape, views, titleLegend)
                     title= titleLegend,
                     opacity = 1)%>%
     addLogo("assets/img/Logo_Claro_Horizontal.png", src = "local",
-            position = "topleft", alpha = 1, width=250,
+            position = "topleft", alpha = 1, width=250, height = 69,
             url="victorgarciads.github.io#MapasEvolucionCOVID")
   return(M)
 }
