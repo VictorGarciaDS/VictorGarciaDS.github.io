@@ -351,7 +351,7 @@ MapaDeContagios<-function(Shape, views, titleLegend)
                     opacity = 1)%>%
     addLogo("assets/img/Logo_Claro_Horizontal.png", src = "local",
             position = "topleft", alpha = 1, width=250, height = 69,
-            url="victorgarciads.github.io#MapasEvolucionCOVID")
+            url="https://victorgarciads.github.io#MapasEvolucionCOVID")
   return(M)
 }
 PrediccionDeDatos<-function(Data, l)#Data es la base y l los días a futuro
