@@ -6,7 +6,7 @@ location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaD
 setwd(location)
 #Constantes
 PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-10-15"
+UltimaFechaRegistrada="2020-10-17"
 
 #  Descarga de datos
 ##  Los que ya estaban colapsados
@@ -76,6 +76,7 @@ for (i in 1:m)
 {
   Aux=read.csv(list.files(pattern = "*.csv")[i])
   Actividad=as.Date(Aux$FECHA_ACTUALIZACION[1])-14
+  print(paste("Leyendo", Actividad+14))
 
   AuxConfirmados=Aux[which(Aux$RESULTADO==1),]
   AuxNegativos=Aux[which(Aux$RESULTADO==2),]
