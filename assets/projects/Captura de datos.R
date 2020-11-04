@@ -6,7 +6,7 @@ location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaD
 setwd(location)
 #Constantes
 PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-10-25"
+UltimaFechaRegistrada="2020-11-02"
 
 #  Descarga de datos
 ##  Los que ya estaban colapsados
@@ -44,7 +44,8 @@ downloader<-function(url, final)
   dates("01.07", "31.07")
   dates("01.08", "31.08")
   dates("01.09", "30.09")
-  dates("01.10", final)
+  dates("01.10", "31.10")
+  dates("01.11", final)
 }
 AjustaOrden<-function(DataFrame)
 {
