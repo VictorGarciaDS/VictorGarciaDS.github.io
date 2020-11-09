@@ -1,13 +1,6 @@
 library(foreign)#para DBF
 library(rgdal)#Para Shp
 
-location=getwd()
-location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaDS.github.io/"
-setwd(location)
-#Constantes
-PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-11-02"
-
 #  Descarga de datos
 ##  Los que ya estaban colapsados
 url <- "https://github.com/ykidch/covid19_mex/archive/master.zip"
