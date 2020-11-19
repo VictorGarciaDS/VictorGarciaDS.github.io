@@ -1,12 +1,3 @@
-location=getwd()
-location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaDS.github.io/"
-setwd(location)
-#Constantes
-PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-11-07"
-
-source(paste(location, "assets/projects/Captura de datos.R", sep=""))
-source(paste(location, "assets/projects/Funciones.R", sep=""))
             ### Confirmados
 Confirmados=Confirmados[a,-ncol(Confirmados)]
 write.dbf(Confirmados,"Mexico_States.dbf")

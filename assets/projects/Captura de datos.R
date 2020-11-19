@@ -1,6 +1,13 @@
 library(foreign)#para DBF
 library(rgdal)#Para Shp
 
+location=getwd()
+location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaDS.github.io/"
+setwd(location)
+#Constantes
+PrimeraFechaRegistrada="2020-03-17"#Se suma 1
+UltimaFechaRegistrada="2020-11-16"
+
 #  Descarga de datos
 ##  Los que ya estaban colapsados
 url <- "https://github.com/ykidch/covid19_mex/archive/master.zip"
@@ -132,9 +139,9 @@ write.csv(x = Recuperados, file = "Recuperados.csv")
 write.csv(x = Activos, file = "Activos.csv")
 
 ### Incrementos
-DatosIncrementos<-Confirmados[,-n]
-for (i in 2:(n-1))
-  DatosIncrementos[,i]=Confirmados[,i+1]-Confirmados[,i]
+#DatosIncrementos<-Confirmados[,-n]
+#for (i in 2:(n-1))
+#  DatosIncrementos[,i]=Confirmados[,i+1]-Confirmados[,i]
 #######Derivada<-Perfiles(DatosIncrementos, FALSE)+theme(legend.position="right")
 #ggsave("Derivada.png" ,Derivada)
 
