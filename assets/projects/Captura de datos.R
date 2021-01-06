@@ -6,7 +6,7 @@ location="/home/victor/Documentos/Carrera/Maestría/PaginaPersonal/VictorGarciaD
 setwd(location)
 #Constantes
 PrimeraFechaRegistrada="2020-03-17"#Se suma 1
-UltimaFechaRegistrada="2020-12-02"
+UltimaFechaRegistrada="2020-12-31"
 
 #  Descarga de datos
 ##  Los que ya estaban colapsados
@@ -85,9 +85,20 @@ for (i in 1:m)
   AuxSospechosos=Aux[which(Aux$RESULTADO==3),]
   AuxDefunciones=AuxConfirmados[which(AuxConfirmados$FECHA_DEF!="9999-99-99"),]
   AuxRecuperados=AuxConfirmados[which(AuxConfirmados$TIPO_PACIENTE==1),]
+  AuxRecuperados=AuxRecuperados[which(AuxRecuperados$FECHA_DEF=="9999-99-99"),]
+  AuxRecuperados=AuxRecuperados[which(as.Date(AuxRecuperados$FECHA_SINTOMAS)<(Actividad+1)),]
+  AuxActivos=AuxConfirmados[which(as.Date(AuxConfirmados$FECHA_SINTOMAS)>Actividad),]
+  if (Actividad>as.Date("2020-11-12"))
+  {
+    AuxConfirmados=Aux[which(Aux$RESULTADO_LAB==1),]
+    AuxNegativos=Aux[which(Aux$RESULTADO_LAB==2),]
+    AuxSospechosos=Aux[which(Aux$RESULTADO_LAB==3),]
+    AuxDefunciones=AuxConfirmados[which(AuxConfirmados$FECHA_DEF!="9999-99-99"),]
+    AuxRecuperados=AuxConfirmados[which(AuxConfirmados$TIPO_PACIENTE==1),]
     AuxRecuperados=AuxRecuperados[which(AuxRecuperados$FECHA_DEF=="9999-99-99"),]
     AuxRecuperados=AuxRecuperados[which(as.Date(AuxRecuperados$FECHA_SINTOMAS)<(Actividad+1)),]
-  AuxActivos=AuxConfirmados[which(as.Date(AuxConfirmados$FECHA_SINTOMAS)>Actividad),]
+    AuxActivos=AuxConfirmados[which(as.Date(AuxConfirmados$FECHA_SINTOMAS)>Actividad),]
+  }
 #    AuxActivos=AuxActivos[which(AuxActivos$TIPO_PACIENTE==1),]
 
   CargaActivos=CargaRecuperados=CargaDefunciones=CargaConfirmados=CargaNegativos=CargaSospechosos=Confirmados[,1:2]
