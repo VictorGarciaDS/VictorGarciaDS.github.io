@@ -7,4 +7,4 @@ Agradecimiento a <a href="https://unsplash.com/@pakata">Pakata Goh</a> por permi
 
 Iconos de banderas diseñados por <a href="https://www.flaticon.es/autores/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon"> www.flaticon.es</a>
 
-![alt text](assets/img/Tarjeta.png)
+![alt text](Tarjeta.png)
